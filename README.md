@@ -24,3 +24,17 @@ ssh root@DOMAIN_NAME_HERE
 ```bash
 rsync -e ssh /home/user/directory root@DOMAIN_NAME_HERE:/remote/user/directory/
 ```
+
+- Serve static content using NGINX -> /etc/nginx/nginx.conf file 
+```conf
+http {
+	server {
+		listen 8080;
+		location / {
+			root /data/www;
+			index index.html index.htm;
+			try_files $uri $uri/ =404;
+		}
+	}
+}
+```
